@@ -1,0 +1,8 @@
+.card-group{
+    background-image: url("/src/images/bg-01.jpg");
+}
+.option-card{
+    margin-left: 25px;
+    margin-right: 25px;
+    background-color: #0062cc;
+}
