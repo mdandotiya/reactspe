@@ -46,7 +46,7 @@ const ShowFoodStaff = (props) => {
     return (
         <Form>
             <FormGroup>
-                <Label for="exampleChef">Select Chef</Label>
+                <Label for="exampleChe">Select Chef</Label>
                 <Input type="select" name="select" id="chefSelect" onChange={(e) => {
                     const chefName = e.target.value;
                     for(var i=0;i<chefs.length;i++){
