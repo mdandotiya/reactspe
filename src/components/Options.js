@@ -1,14 +1,29 @@
 import React from "react";
 import {Button} from "reactstrap";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import {Redirect,Link} from 'react-router-dom';
 
 // reactstrap components
 import { Card, CardBody, CardImg, CardTitle, CardText } from "reactstrap";
 
 import './Optionstyle.css';
+import {render} from "@testing-library/react";
+import PatientPage from "./PatientPage";
+import Home from "./Home";
+import ResourcePage from "./Resources/ResourcePage";
+import StaffPage from "./Staff/StaffPage";
 
 function Options() {
+
+    const onSubmit = () => {
+        return  <Redirect  to="/patient-page" />
+    }
+
     return (
-        <>
+        <Router>
+            <Route path="/patient-page" component={PatientPage} exact/>
+            <Route path="/resource-page" component={ResourcePage} exact/>
+            <Route path="/staff-page" component={StaffPage} exact/>
             <div className=" card-group">
                 <Card style={{marginLeft:'25px',marginRight:'25px',marginTop:'50px',marginBottom:'500px'}}>
                     <CardImg
@@ -24,13 +39,7 @@ function Options() {
                         <CardText>
                             <small className=" text-muted">Last updated 3 mins ago</small>
                         </CardText>
-                        <Button
-                            color="primary"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                        >
-                            Lets Go
-                        </Button>
+                        <Link to="/patient-page">Dashboard</Link>
                     </CardBody>
                 </Card>
                 <Card style={{marginLeft:'25px',marginRight:'25px',marginTop:'50px',marginBottom:'500px'}}>
@@ -49,8 +58,8 @@ function Options() {
                         </CardText>
                         <Button
                             color="primary"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
+                            href="/resource-page"
+                            onClick={onSubmit}
                         >
                             Lets Go
                         </Button>
@@ -70,13 +79,7 @@ function Options() {
                         <CardText>
                             <small className=" text-muted">Last updated 3 mins ago</small>
                         </CardText>
-                        <Button
-                            color="primary"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                        >
-                            Lets Go
-                        </Button>
+                        <Link to="/staff-page">Dashboard</Link>
                     </CardBody>
                 </Card>
                 <Card style={{marginLeft:'25px',marginRight:'25px',marginTop:'50px',marginBottom:'500px'}}>
@@ -103,7 +106,7 @@ function Options() {
                     </CardBody>
                 </Card>
             </div>
-        </>
+        </Router>
     );
 }
 

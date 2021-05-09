@@ -9,7 +9,7 @@ import AddPatients from "./AddPatients";
 
 const PatientPage=()=>{
     return(
-        <div>
+        <div className="Login">
             <Router>
             <ToastContainer/>
             <Card className="my-2 bg-warning">

@@ -49,6 +49,8 @@ const Patient = ({patient,update},props) => {
                 <CardText>Contact No: {patient.contactno}</CardText>
                 <CardText>Gender: {patient.gender}</CardText>
                 <CardText>Id: {patient.id}</CardText>
+                <CardText>Room No: {patient.room.roomid}</CardText>
+                <CardText>Attendent Name : {patient.attendent.name}</CardText>
                 <Container className="text-center">
                     <Button color="danger" onClick={()=>{
                         deletePatient(patient.id);
@@ -58,11 +60,11 @@ const Patient = ({patient,update},props) => {
                         <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalHeader toggle={toggle}>{patient.name}'s Health Condition :</ModalHeader>
                             <ModalBody>
-                                 Blood Pressure : {patient.bloodpressure}<br/>
-                                 Hemoglobin : {patient.hemoglobin}<br/>
-                                 Sugar Level : {patient.sugar}<br/>
-                                 Uric Acid Level : {patient.uricacid}<br/>
-                                 Cholestrol Level : {patient.cholestrol}<br/>
+                                 Blood Pressure : {patient.healthcare.bloodpressure}<br/>
+                                 Hemoglobin : {patient.healthcare.hemoglobin}<br/>
+                                 Sugar Level : {patient.healthcare.sugar}<br/>
+                                 Uric Acid Level : {patient.healthcare.uricacid}<br/>
+                                 Cholestrol Level : {patient.healthcare.cholestrol}<br/>
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="primary" onClick={toggle}>Go Back</Button>{' '}
