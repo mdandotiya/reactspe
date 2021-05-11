@@ -9,18 +9,18 @@ import {
 import axios from "axios";
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
-const ShowFoodStaff = (props) => {
+const ShowComplaintStaff = (props) => {
 
-    const [chefs,setChefs]=useState([]);
-    const [chef,setChef]=useState({});
-    const [food,setFood]=useState({});
+    const [CSs,setCSs]=useState([]);
+    const [CS,setCS]=useState({});
+    const [complaint,setComplaints] = useState([]);
 
-    const getAllChefsFromServer=()=>{
-        axios.get(`http://localhost:8888/api/chef`).then(
+    const getAllCSsFromServer=()=>{
+        axios.get(`http://localhost:8888/api/complaintStaff`).then(
             (response)=>{
                 console.log(response.data);
-                setChefs(response.data);
-                console.log(chefs)
+                setCSs(response.data);
+                console.log(CSs)
             },
             (error)=>{
                 console.log(error);
@@ -30,7 +30,7 @@ const ShowFoodStaff = (props) => {
 
 
     useEffect(()=>{
-        getAllChefsFromServer();
+        getAllCSsFromServer();
     },[]);
 
 
@@ -46,14 +46,14 @@ const ShowFoodStaff = (props) => {
     return (
         <Form>
             <FormGroup>
-                <Label for="exampleChe">Select Chef</Label>
-                <Input type="select" name="select" id="chefSelect" onChange={(e) => {
-                    const chefName = e.target.value;
-                    for(var i=0;i<chefs.length;i++){
-                        var obj = chefs[i];
-                        if(obj.name == chefName){
-                            setChef(obj)
-                            setFood(obj.food)
+                <Label for="exampleCS">Select Complaint Staff</Label>
+                <Input type="select" name="select" id="CSSelect" onChange={(e) => {
+                    const CSName = e.target.value;
+                    for(var i=0;i<CSs.length;i++){
+                        var obj = CSs[i];
+                        if(obj.name == CSName){
+                            setCS(obj)
+                            setComplaints(obj.complaints)
                         }
                     }
 
@@ -61,7 +61,7 @@ const ShowFoodStaff = (props) => {
                 }}>
                     <option>[Select one]</option>
                     {
-                        chefs.length > 0 ? chefs.map((item) => <option>{item.name}</option>) : "No Chefs"
+                        CSs.length > 0 ? CSs.map((item) => <option>{item.name}</option>) : "No Data"
                     }
                 </Input>
             </FormGroup>
@@ -69,8 +69,9 @@ const ShowFoodStaff = (props) => {
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>Chef Details :</ModalHeader>
                 <ModalBody>
-                    Chef Name : {chef.name}<br/>
-                    Chef Type : {food.type}<br/>
+                    Name : {CS.name}<br/>
+                    Number of Open Complaints : {CS.openComplaints}<br/>
+                    Complaints : {complaint.length > 0 ? complaint.map((item)=> item.detail+" , "): "No Complaints"}
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={toggle}>Go Back</Button>{' '}
@@ -82,4 +83,4 @@ const ShowFoodStaff = (props) => {
     );
 }
 
-export default ShowFoodStaff;
+export default ShowComplaintStaff;

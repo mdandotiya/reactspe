@@ -14,6 +14,7 @@ import FastingDay from "./components/FastingDay";
 import Patientmenu from "./components/Patientmenu";
 import ResourcePage from "./components/Resources/ResourcePage";
 import StaffPage from "./components/Staff/StaffPage";
+import Checkbox from "./components/Staff/Checkbox";
 
 function App() {
     //const btnHandle = () => toast("Wow so easy!");

@@ -7,6 +7,13 @@ import Resourcemenu from "../Resources/Resourcemenu";
 import ShowAttendent from "./ShowAttendent";
 import StaffMenu from "./StaffMenu";
 import ShowFoodStaff from "./ShowFoodStaff";
+import ShowComplaintStaff from "./ShowComplaintStaff";
+import ShowCleaningStaff from "./ShowCleaningStaff";
+import AddAttendent from "./AddAttendent";
+import AddChef from "./AddChef";
+import AddCleaningStaff from "./AddCleaningStaff";
+import AddFood from "./AddFood";
+import AddComplaintStaff from "./AddComplaintStaff";
 
 const StaffPage=()=>{
     return(
@@ -26,8 +33,14 @@ const StaffPage=()=>{
                         <Col md={8}>
                             <Route path="/" component={Home} exact/>
                             <Route path="/show-food-staff" component={ShowFoodStaff} exact/>
-                            <Route path="/add-food-staff" component={Home} exact/>
+                            <Route path="/add-food-staff" component={AddChef} exact/>
                             <Route path="/show-attendent" component={ShowAttendent} exact/>
+                            <Route path="/show-complaint-staff" component={ShowComplaintStaff} exact/>
+                            <Route path="/show-cleaning-staff" component={ShowCleaningStaff} exact/>
+                            <Route path="/add-attendent" component={AddAttendent} exact/>
+                            <Route path="/add-cleaning-staff" component={AddCleaningStaff} exact/>
+                            <Route path="/add-complaint-staff" component={AddComplaintStaff} exact/>
+                            <Route path="/add-food-type" component={AddFood} exact/>
                         </Col>
                     </Row>
                 </Container>

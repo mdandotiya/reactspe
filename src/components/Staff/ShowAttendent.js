@@ -61,7 +61,7 @@ const ShowAttendent = (props) => {
     return (
         <Form>
             <FormGroup>
-                <Label for="exampleAttendent">Select Equipment</Label>
+                <Label for="exampleAttendent">Select Attendent</Label>
                 <Input type="select" name="select" id="attendentSelect" onChange={(e) => {
                     const attendentName = e.target.value;
                     for(var i=0;i<attendents.length;i++){
@@ -85,6 +85,8 @@ const ShowAttendent = (props) => {
                 <ModalHeader toggle={toggle}>Attendent Details :</ModalHeader>
                 <ModalBody>
                     Attendent Name : {attendent.name}<br/>
+                    Attendent Age : {attendent.age}<br/>
+                    Attendent Gender : {attendent.gender}<br/>
                     Taking Care of : {patients.length > 0 ? patients.map((item)=> item.name+" "): "No Body"}
                 </ModalBody>
                 <ModalFooter>

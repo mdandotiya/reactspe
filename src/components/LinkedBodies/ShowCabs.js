@@ -7,20 +7,19 @@ import {
     Button, ModalHeader, ModalBody, ModalFooter, Modal
 } from 'reactstrap';
 import axios from "axios";
-import { ListGroup, ListGroupItem } from 'reactstrap';
 
-const ShowFoodStaff = (props) => {
+const ShowCabs = (props) => {
 
-    const [chefs,setChefs]=useState([]);
-    const [chef,setChef]=useState({});
-    const [food,setFood]=useState({});
+    const [cabs,setCabs]=useState([]);
+    const [cab,setCab]=useState({});
+    const [service,setService] = useState({});
 
-    const getAllChefsFromServer=()=>{
-        axios.get(`http://localhost:8888/api/chef`).then(
+    const getAllCabsFromServer=()=>{
+        axios.get(`http://localhost:8888/api/cab`).then(
             (response)=>{
                 console.log(response.data);
-                setChefs(response.data);
-                console.log(chefs)
+                setCabs(response.data);
+                console.log(cabs)
             },
             (error)=>{
                 console.log(error);
@@ -30,7 +29,7 @@ const ShowFoodStaff = (props) => {
 
 
     useEffect(()=>{
-        getAllChefsFromServer();
+        getAllCabsFromServer();
     },[]);
 
 
@@ -46,14 +45,14 @@ const ShowFoodStaff = (props) => {
     return (
         <Form>
             <FormGroup>
-                <Label for="exampleChe">Select Chef</Label>
-                <Input type="select" name="select" id="chefSelect" onChange={(e) => {
-                    const chefName = e.target.value;
-                    for(var i=0;i<chefs.length;i++){
-                        var obj = chefs[i];
-                        if(obj.name == chefName){
-                            setChef(obj)
-                            setFood(obj.food)
+                <Label for="exampleCS">Select Cabs</Label>
+                <Input type="select" name="select" id="CSSelect" onChange={(e) => {
+                    const cabName = e.target.value;
+                    for(var i=0;i<cabs.length;i++){
+                        var obj = cabs[i];
+                        if(obj.name == cabName){
+                            setCab(obj)
+                            setService(obj.cabService)
                         }
                     }
 
@@ -61,16 +60,18 @@ const ShowFoodStaff = (props) => {
                 }}>
                     <option>[Select one]</option>
                     {
-                        chefs.length > 0 ? chefs.map((item) => <option>{item.name}</option>) : "No Chefs"
+                        cabs.length > 0 ? cabs.map((item) => <option>{item.name}</option>) : "No Cabs"
                     }
                 </Input>
             </FormGroup>
             <Button color="primary" onClick={toggle}>Show Details</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>Chef Details :</ModalHeader>
+                <ModalHeader toggle={toggle}>Cab Details :</ModalHeader>
                 <ModalBody>
-                    Chef Name : {chef.name}<br/>
-                    Chef Type : {food.type}<br/>
+                    Name : {cab.name}<br/>
+                    Fare per KM : {cab.farePerKm}<br/>
+                    Total Km : {cab.totalKm}<br/>
+                    Belongs To : {service.name}<br/>
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={toggle}>Go Back</Button>{' '}
@@ -82,4 +83,4 @@ const ShowFoodStaff = (props) => {
     );
 }
 
-export default ShowFoodStaff;
+export default ShowCabs;

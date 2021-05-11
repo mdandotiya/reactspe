@@ -98,7 +98,7 @@ const AddPatients = (props) => {
                     for(var i=0;i<attendent.length;i++){
                         var obj = attendent[i];
                         if(obj.name === attendentname){
-                            setpatient({...patient, attendentid: obj.id})
+                            setpatient({...patient, attendent: obj})
                         }
                     }
                 }}>
@@ -113,7 +113,7 @@ const AddPatients = (props) => {
                     for(var i=0;i<room.length;i++){
                         var obj = room[i];
                         if(obj.roomid == roomno){
-                            setpatient({...patient, roomid: obj.id})
+                            setpatient({...patient, room: obj})
                         }
                     }
 
@@ -124,49 +124,51 @@ const AddPatients = (props) => {
                 </Input>
             </FormGroup>
             <FormGroup>
-                <Label for="exampleDate">Date</Label>
-                <MultipleDatePicker
-                    onSubmit={dates => setValue(dates)}
-                />
-            </FormGroup>
-            <FormGroup>
                 <Label for="exampleHem">Hemoglobin</Label>
-                <Input type="Hem" name="Hemoglobin" id="exampleHem"
+                <Input type="number" name="Hemoglobin" id="exampleHem"
                        onChange={(e) => {
-                           setpatient({...patient, Hemoglobin: e.target.value})
+                           setHealth({...health, Hemoglobin: e.target.value})
                        }}/>
             </FormGroup>
             <FormGroup>
                 <Label for="exampleBP">Blood Pressure</Label>
-                <Input type="BP" name="Blood Pressure" id="exampleBP"
+                <Input type="number" name="Blood Pressure" id="exampleBP"
                        onChange={(e) => {
-                           setpatient({...patient, Bloodpressure: e.target.value})
+                           setHealth({...health, Bloodpressure: e.target.value})
                        }}/>
             </FormGroup>
             <FormGroup>
                 <Label for="exampleSugar">Sugar</Label>
-                <Input type="Sugar" name="Sugar" id="exampleSugar"
+                <Input type="number" name="Sugar" id="exampleSugar"
                        onChange={(e) => {
-                           setpatient({...patient, Sugar: e.target.value})
+                           setHealth({...health, Sugar: e.target.value})
                        }}/>
             </FormGroup>
             <FormGroup>
                 <Label for="exampleChol">Cholestrol</Label>
-                <Input type="Chol" name="Cholestrol" id="exampleChol"
+                <Input type="number" name="Cholestrol" id="exampleChol"
                        onChange={(e) => {
-                           setpatient({...patient, Cholestrol: e.target.value})
+                           setHealth({...health, Cholestrol: e.target.value})
                        }}/>
             </FormGroup>
 
             <FormGroup>
                 <Label for="exampleUA">Uric Acid</Label>
-                <Input type="UA" name="Uric Acid" id="exampleUA"
+                <Input type="number" name="Uric Acid" id="exampleUA"
                        onChange={(e) => {
-                           setpatient({...patient, Uricacid: e.target.value})
+                           setHealth({...health, Uricacid: e.target.value})
                        }}/>
+            </FormGroup>
+            <FormGroup>
+                <Label for="exampleDate">Date</Label>
+                <MultipleDatePicker
+                    onSubmit={dates => setValue(dates)}
+                />
             </FormGroup>
 
             <Button type="reset" onClick={()=>{
+                console.log(health);
+                setpatient({...patient,healthcare:health});
                 console.log(patient);
                 savePatient();
             }}>Submit</Button>

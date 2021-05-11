@@ -12,6 +12,7 @@ import PatientPage from "./PatientPage";
 import Home from "./Home";
 import ResourcePage from "./Resources/ResourcePage";
 import StaffPage from "./Staff/StaffPage";
+import Page from "./LinkedBodies/Page";
 
 function Options() {
 
@@ -24,6 +25,7 @@ function Options() {
             <Route path="/patient-page" component={PatientPage} exact/>
             <Route path="/resource-page" component={ResourcePage} exact/>
             <Route path="/staff-page" component={StaffPage} exact/>
+            <Route path="/LB-page" component={Page} exact/>
             <div className=" card-group">
                 <Card style={{marginLeft:'25px',marginRight:'25px',marginTop:'50px',marginBottom:'500px'}}>
                     <CardImg
@@ -96,13 +98,7 @@ function Options() {
                         <CardText>
                             <small className=" text-muted">Last updated 3 mins ago</small>
                         </CardText>
-                        <Button
-                            color="primary"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                        >
-                            Lets Go
-                        </Button>
+                        <Link to="/LB-page">Dashboard</Link>
                     </CardBody>
                 </Card>
             </div>

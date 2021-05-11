@@ -9,18 +9,18 @@ import {
 import axios from "axios";
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
-const ShowFoodStaff = (props) => {
+const ShowHospitals = (props) => {
 
-    const [chefs,setChefs]=useState([]);
-    const [chef,setChef]=useState({});
+    const [hospitals,setHospitals]=useState([]);
+    const [hospital,setHospital]=useState({});
     const [food,setFood]=useState({});
 
-    const getAllChefsFromServer=()=>{
-        axios.get(`http://localhost:8888/api/chef`).then(
+    const getAllHospitalsFromServer=()=>{
+        axios.get(`http://localhost:8888/api/hospitals`).then(
             (response)=>{
                 console.log(response.data);
-                setChefs(response.data);
-                console.log(chefs)
+                setHospitals(response.data);
+                console.log(hospitals)
             },
             (error)=>{
                 console.log(error);
@@ -30,7 +30,7 @@ const ShowFoodStaff = (props) => {
 
 
     useEffect(()=>{
-        getAllChefsFromServer();
+        getAllHospitalsFromServer();
     },[]);
 
 
@@ -46,14 +46,13 @@ const ShowFoodStaff = (props) => {
     return (
         <Form>
             <FormGroup>
-                <Label for="exampleChe">Select Chef</Label>
-                <Input type="select" name="select" id="chefSelect" onChange={(e) => {
-                    const chefName = e.target.value;
-                    for(var i=0;i<chefs.length;i++){
-                        var obj = chefs[i];
-                        if(obj.name == chefName){
-                            setChef(obj)
-                            setFood(obj.food)
+                <Label for="exampleChe">Select Hospital</Label>
+                <Input type="select" name="select" id="hospitalSelect" onChange={(e) => {
+                    const hospitalName = e.target.value;
+                    for(var i=0;i<hospitals.length;i++){
+                        var obj = hospitals[i];
+                        if(obj.name == hospitalName){
+                            setHospital(obj)
                         }
                     }
 
@@ -61,16 +60,16 @@ const ShowFoodStaff = (props) => {
                 }}>
                     <option>[Select one]</option>
                     {
-                        chefs.length > 0 ? chefs.map((item) => <option>{item.name}</option>) : "No Chefs"
+                        hospitals.length > 0 ? hospitals.map((item) => <option>{item.name}</option>) : "No Hospitals"
                     }
                 </Input>
             </FormGroup>
             <Button color="primary" onClick={toggle}>Show Details</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>Chef Details :</ModalHeader>
+                <ModalHeader toggle={toggle}>Hospital Details :</ModalHeader>
                 <ModalBody>
-                    Chef Name : {chef.name}<br/>
-                    Chef Type : {food.type}<br/>
+                    Hospital Name : {hospital.name}<br/>
+                    Doctor's Fee Per Visit : {hospital.feePerVisit}<br/>
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={toggle}>Go Back</Button>{' '}
@@ -82,4 +81,4 @@ const ShowFoodStaff = (props) => {
     );
 }
 
-export default ShowFoodStaff;
+export default ShowHospitals;
