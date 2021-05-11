@@ -13,6 +13,7 @@ const Resourcemenu=()=>{
             <Link className="list-group-item list-group-item-action" tag="a" to="/assign-he">Assign Health Equipment</Link>
             <Link className="list-group-item list-group-item-action" tag="a" to="/show-le">Show Luxury Equipments</Link>
             <Link className="list-group-item list-group-item-action" tag="a" to="/add-le">Add Luxury Equipment</Link>
+            <Link className="list-group-item list-group-item-action" tag="a" to="/assign-le">Assign Luxury Equipment</Link>
         </ListGroup>
 
     );

@@ -10,12 +10,12 @@ const AssignHE = (props) => {
     const [equipments,setEquipments]=useState([]);
     const [equipattendent,setrelation]=useState([]);
     const [equipment,setEquipment]=useState({});
-    const [temp,setTemp] = useState({});
+    const [temp,setTemp] = useState([]);
     const [availableEquipment,setAvailableEquipment]=useState([]);
 
 
     const saveRelation = () => {
-        axios.post(`http://localhost:8888/api/equipment`,equipattendent).then(
+        axios.post(`http://localhost:8888/api/equipmentassign`,equipment).then(
             (response)=>{
                 console.log(response.data);
                 toast("Data Saved Successfully !!");
@@ -70,7 +70,7 @@ const AssignHE = (props) => {
                     for(var i=0;i<attendents.length;i++){
                         var obj = attendents[i];
                         if(obj.name == attendentName){
-                            setTemp(obj)
+                            setEquipment({...equipment,attendent:obj})
                             console.log(obj)
 
                         }
@@ -91,7 +91,7 @@ const AssignHE = (props) => {
                     for(var i=0;i<equipments.length;i++){
                         var obj = equipments[i];
                         if(obj.name == equipmentName){
-                            setEquipment(availableEquipment.filter((p)=>p.name == obj.name))
+                            setEquipment({...equipment,healthEquipment:obj})
 
                         }
                     }
@@ -105,8 +105,6 @@ const AssignHE = (props) => {
                 </Input>
             </FormGroup>
             <Button type="reset" onClick={()=>{
-                equipattendent.push(temp)
-                setEquipment({...equipment,attendents:equipattendent})
                 console.log(equipment);
                 saveRelation();
             }}>Submit</Button>

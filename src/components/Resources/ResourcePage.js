@@ -11,6 +11,7 @@ import AddRoom from "./AddRoom";
 import AddHealthEquipment from "./AddHealthEquipment";
 import AddLuxuryResource from "./AddLuxuryResource";
 import AssignHE from "./AssignHealthEquipment";
+import AssignLR from "./AssignLuxuryResource";
 
 const ResourcePage=()=>{
     return(
@@ -36,6 +37,7 @@ const ResourcePage=()=>{
                             <Route path="/add-hce" component={AddHealthEquipment} exact/>
                             <Route path="/add-le" component={AddLuxuryResource} exact/>
                             <Route path="/assign-he" component={AssignHE} exact/>
+                            <Route path="/assign-le" component={AssignLR} exact/>
                         </Col>
                     </Row>
                 </Container>
