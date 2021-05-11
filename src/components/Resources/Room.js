@@ -6,13 +6,7 @@ import {
     CardSubtitle,
     CardText,
     Container,
-    Modal,
-    ModalBody,
-    ModalFooter,
-    ModalHeader
 } from "reactstrap";
-import {Link} from "react-router-dom";
-import { BrowserRouter as Route} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
 

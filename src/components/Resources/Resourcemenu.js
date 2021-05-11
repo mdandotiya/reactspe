@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListGroup,ListGroupItem} from "reactstrap";
+import {ListGroup} from "reactstrap";
 import {Link} from "react-router-dom";
 
 const Resourcemenu=()=>{

@@ -11,9 +11,6 @@ import {
     ModalFooter,
     ModalHeader
 } from "reactstrap";
-import {Link} from "react-router-dom";
-import Home from "./Home";
-import { BrowserRouter as Route} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
 

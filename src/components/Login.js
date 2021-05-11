@@ -3,11 +3,6 @@ import {Jumbotron,Row,Col} from "reactstrap";
 import {
     Card,
     CardBody,
-    CardTitle,
-    CardSubtitle,
-    CardText,
-    CardFooter,
-    Button,
     Container,
 } from "reactstrap";
 import LoginForm from "./LoginForm";

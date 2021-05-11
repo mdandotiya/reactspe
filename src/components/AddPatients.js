@@ -1,10 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import {useState,useEffect} from "react";
-import DayPicker, {DateUtils} from "react-day-picker";
 import axios from "axios";
-import DatePicker , {DateObject} from "react-multi-date-picker"
-import DatePanel from "react-multi-date-picker/plugins/date_panel"
 import MultipleDatePicker from 'react-multiple-datepicker'
 import {toast} from "react-toastify";
 

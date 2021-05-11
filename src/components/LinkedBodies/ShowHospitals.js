@@ -7,7 +7,6 @@ import {
     Button, ModalHeader, ModalBody, ModalFooter, Modal
 } from 'reactstrap';
 import axios from "axios";
-import { ListGroup, ListGroupItem } from 'reactstrap';
 
 const ShowHospitals = (props) => {
 

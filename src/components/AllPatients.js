@@ -1,5 +1,4 @@
 import React from 'react';
-import PatientPage from "./PatientPage";
 import { useState,useEffect } from "react";
 import axios from "axios";
 import Patient from "./Patient";

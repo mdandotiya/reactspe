@@ -6,7 +6,6 @@ import Home from "./Home";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import AllPatients from "./AllPatients";
 import AddPatients from "./AddPatients";
-import AddHealth from "./AddHealth";
 
 const PatientPage=()=>{
     return(

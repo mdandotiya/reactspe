@@ -5,11 +5,8 @@ import {Redirect,Link} from 'react-router-dom';
 
 // reactstrap components
 import { Card, CardBody, CardImg, CardTitle, CardText } from "reactstrap";
-
 import './Optionstyle.css';
-import {render} from "@testing-library/react";
 import PatientPage from "./PatientPage";
-import Home from "./Home";
 import ResourcePage from "./Resources/ResourcePage";
 import StaffPage from "./Staff/StaffPage";
 import Page from "./LinkedBodies/Page";
