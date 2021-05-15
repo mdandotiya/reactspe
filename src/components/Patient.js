@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Button,
     Card,
@@ -17,6 +17,29 @@ import {toast} from "react-toastify";
 
 const Patient = ({patient,update},props) => {
 
+    const [health,setHealth] = useState({});
+    const suggestion = [];
+    const getSuggestions=()=>{
+        setHealth(patient.healthcare)
+        console.log(health)
+        if(health.hasHearingProblem == 1){
+            suggestion.push("Hearing Machine Recommended")
+        }
+        if(health.hasVisionProblem == 1){
+            suggestion.push("Glasses Recommended")
+        }
+        if(health.isClaustrophobic == 1){
+            suggestion.push("Non AC room Recommended")
+        }
+        if(health.Cholestrol > 240){
+            suggestion.push("Diet Food Recommended")
+        }
+        if(health.hasLegProblem == 1){
+            suggestion.push("Wheel Chair Recommended")
+        }
+        console.log(suggestion)
+    }
+
     const deletePatient=(id)=>{
         axios.delete(`http://localhost:8888/api/patientdel/${id}`).then(
             (response)=>{
@@ -28,6 +51,10 @@ const Patient = ({patient,update},props) => {
             }
         )
     }
+
+    useEffect(()=>{
+        getSuggestions();
+    },[]);
 
     const {
         buttonLabel,
@@ -52,7 +79,6 @@ const Patient = ({patient,update},props) => {
                     <Button color="danger" onClick={()=>{
                         deletePatient(patient.id);
                     }}>Delete</Button>
-                    <Button color="warning m1-3">Update</Button>
                     <Button color="primary" onClick={toggle}>Health Condition</Button>
                         <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalHeader toggle={toggle}>{patient.name}'s Health Condition :</ModalHeader>

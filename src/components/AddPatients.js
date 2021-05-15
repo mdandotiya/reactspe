@@ -8,10 +8,10 @@ import {toast} from "react-toastify";
 const AddPatients = (props) => {
 
     const [patient, setpatient] = useState({});
-    const [fastingDates, setDate] = useState([]);
+    const [fastingDates, setDate] = useState({});
     const [attendent,setattendent] = useState([]);
     const [room,setroom] = useState([]);
-    const [value,setValue]=useState([]);
+    const [value,setValue]=useState({});
     const [health,setHealth] = useState({});
 
     // form handler function
@@ -23,6 +23,32 @@ const AddPatients = (props) => {
 
     const savePatient = () => {
         axios.post(`http://localhost:8888/api/patient`,patient).then(
+            (response)=>{
+                console.log(response.data);
+                toast("Data Saved Successfully !!");
+            },
+            (error)=>{
+                toast("Data can't be saved !!");
+                console.log(error);
+            }
+        );
+    }
+
+    const saveHealth = () => {
+        axios.post(`http://localhost:8888/api/healthcare`,health).then(
+            (response)=>{
+                console.log(response.data);
+                toast("Data Saved Successfully !!");
+            },
+            (error)=>{
+                toast("Data can't be saved !!");
+                console.log(error);
+            }
+        );
+    }
+
+    const saveDate = () => {
+        axios.post(`http://localhost:8888/api/date`,fastingDates).then(
             (response)=>{
                 console.log(response.data);
                 toast("Data Saved Successfully !!");
@@ -120,53 +146,7 @@ const AddPatients = (props) => {
                     {room.map(rooms => <option>{rooms.roomid}</option>)}
                 </Input>
             </FormGroup>
-            <FormGroup>
-                <Label for="exampleHem">Hemoglobin</Label>
-                <Input type="number" name="Hemoglobin" id="exampleHem"
-                       onChange={(e) => {
-                           setHealth({...health, Hemoglobin: e.target.value})
-                       }}/>
-            </FormGroup>
-            <FormGroup>
-                <Label for="exampleBP">Blood Pressure</Label>
-                <Input type="number" name="Blood Pressure" id="exampleBP"
-                       onChange={(e) => {
-                           setHealth({...health, Bloodpressure: e.target.value})
-                       }}/>
-            </FormGroup>
-            <FormGroup>
-                <Label for="exampleSugar">Sugar</Label>
-                <Input type="number" name="Sugar" id="exampleSugar"
-                       onChange={(e) => {
-                           setHealth({...health, Sugar: e.target.value})
-                       }}/>
-            </FormGroup>
-            <FormGroup>
-                <Label for="exampleChol">Cholestrol</Label>
-                <Input type="number" name="Cholestrol" id="exampleChol"
-                       onChange={(e) => {
-                           setHealth({...health, Cholestrol: e.target.value})
-                       }}/>
-            </FormGroup>
-
-            <FormGroup>
-                <Label for="exampleUA">Uric Acid</Label>
-                <Input type="number" name="Uric Acid" id="exampleUA"
-                       onChange={(e) => {
-                           setHealth({...health, Uricacid: e.target.value})
-                       }}/>
-            </FormGroup>
-            <FormGroup>
-                <Label for="exampleDate">Date</Label>
-                <MultipleDatePicker
-                    onSubmit={dates => setValue(dates)}
-                />
-            </FormGroup>
-
             <Button type="reset" onClick={()=>{
-                console.log(health);
-                setpatient({...patient,healthcare:health});
-                console.log(patient);
                 savePatient();
             }}>Submit</Button>
         </Form>

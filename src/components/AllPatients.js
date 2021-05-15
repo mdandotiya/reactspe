@@ -9,6 +9,7 @@ const AllPatients=()=>{
         document.title="All Patients";
     },[]);
 
+
     const getAllPatientsFromServer=()=>{
         axios.get(`http://localhost:8888/api/patient`).then(
             (response)=>{

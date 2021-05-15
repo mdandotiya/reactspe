@@ -9,8 +9,6 @@ const AddComplaintStaff = (props) => {
 
     const[staff,setStaff] = useState({});
     const[complaints,setComplaints] = useState([]);
-    const[complaint,setComplaint] = useState([]);
-    const[result,setResult] = useState({});
 
 
     const [selected, setSelected] = useState([]);

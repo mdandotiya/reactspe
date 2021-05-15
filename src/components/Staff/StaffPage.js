@@ -1,6 +1,6 @@
 import React from 'react'
-import {ToastContainer} from "react-toastify";
-import {Container, Row, Col, Card, CardBody} from "reactstrap";
+import {toast, ToastContainer} from "react-toastify";
+import {Container, Row, Col, Card, CardBody, Button} from "reactstrap";
 import Home from "../Home";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import ShowAttendent from "./ShowAttendent";
@@ -14,7 +14,18 @@ import AddCleaningStaff from "./AddCleaningStaff";
 import AddFood from "./AddFood";
 import AddComplaintStaff from "./AddComplaintStaff";
 
-const StaffPage=()=>{
+const StaffPage=(props)=>{
+
+    const handleHome=()=>{
+        let path = "/options";
+        props.history.push(path);
+    }
+
+    const handleLogout=()=>{
+        let path = "/logout";
+        props.history.push(path);
+    }
+
     return(
         <div className="Login">
             <Router>
@@ -22,6 +33,13 @@ const StaffPage=()=>{
                 <Card className="my-2 bg-warning">
                     <CardBody>
                         <h1 className="text-center my-2">Welcome to the Staff Page</h1>
+                        <Button color = "warning" onClick={()=>{
+                            handleHome();
+                        }}>Home</Button>
+                        <Button color = "danger" onClick={()=>{
+                            handleLogout();
+                            toast("Logged Out!!")
+                        }}>Logout</Button>
                     </CardBody>
                 </Card>
                 <Container>

@@ -3,11 +3,20 @@ import { Button } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import axios from "axios";
 import {toast} from "react-toastify";
+import { withRouter } from "react-router-dom";
 
 export default class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { email: false };
+        this.routeChange = this.routeChange.bind(this);
+    }
+
+
+
+    routeChange() {
+        let path = "/options";
+        this.props.history.push(path);
     }
 
     handleValidSubmit = (event, values) => {
@@ -17,6 +26,7 @@ export default class LoginForm extends React.Component {
             (response) => {
                 if(response.data.username === values.email && response.data.password === values.password){
                     toast("Login Successful");
+                        this.routeChange()
                 }
                 else{
                     toast("Invalid Username or Password")
@@ -81,3 +91,5 @@ export default class LoginForm extends React.Component {
         );
     }
 }
+
+

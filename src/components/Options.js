@@ -13,16 +13,23 @@ import Page from "./LinkedBodies/Page";
 
 function Options() {
 
-    const onSubmit = () => {
-        return  <Redirect  to="/patient-page" />
+    const onSubmitResource = () => {
+        return  <Redirect  to="/resource-page" />
     }
 
-    return (
-        <Router>
-            <Route path="/patient-page" component={PatientPage} exact/>
-            <Route path="/resource-page" component={ResourcePage} exact/>
-            <Route path="/staff-page" component={StaffPage} exact/>
-            <Route path="/LB-page" component={Page} exact/>
+    const onSubmitPatient = () =>{
+        return <Redirect to="/patient-page"/>
+    }
+
+    const onSubmitStaff = () => {
+        return <Redirect to="/staff-page"/>
+    }
+
+    const onSubmitCB = () => {
+            return <Redirect to="/LB-page"/>
+        }
+
+            return (
             <div className=" card-group">
                 <Card style={{marginLeft:'25px',marginRight:'25px',marginTop:'50px',marginBottom:'500px'}}>
                     <CardImg
@@ -38,7 +45,13 @@ function Options() {
                         <CardText>
                             <small className=" text-muted">Last updated 3 mins ago</small>
                         </CardText>
-                        <Link to="/patient-page">Dashboard</Link>
+                        <Button
+                            color="primary"
+                            href="/patient-page"
+                            onClick={onSubmitPatient}
+                        >
+                            Lets Go
+                        </Button>
                     </CardBody>
                 </Card>
                 <Card style={{marginLeft:'25px',marginRight:'25px',marginTop:'50px',marginBottom:'500px'}}>
@@ -58,7 +71,7 @@ function Options() {
                         <Button
                             color="primary"
                             href="/resource-page"
-                            onClick={onSubmit}
+                            onClick={onSubmitResource}
                         >
                             Lets Go
                         </Button>
@@ -78,7 +91,13 @@ function Options() {
                         <CardText>
                             <small className=" text-muted">Last updated 3 mins ago</small>
                         </CardText>
-                        <Link to="/staff-page">Dashboard</Link>
+                        <Button
+                            color="primary"
+                            href="/staff-page"
+                            onClick={onSubmitStaff}
+                        >
+                            Lets Go
+                        </Button>
                     </CardBody>
                 </Card>
                 <Card style={{marginLeft:'25px',marginRight:'25px',marginTop:'50px',marginBottom:'500px'}}>
@@ -95,11 +114,16 @@ function Options() {
                         <CardText>
                             <small className=" text-muted">Last updated 3 mins ago</small>
                         </CardText>
-                        <Link to="/LB-page">Dashboard</Link>
+                        <Button
+                            color="primary"
+                            href="/LB-page"
+                            onClick={onSubmitCB}
+                        >
+                            Lets Go
+                        </Button>
                     </CardBody>
                 </Card>
             </div>
-        </Router>
     );
 }
 

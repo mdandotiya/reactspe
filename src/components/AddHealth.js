@@ -3,14 +3,19 @@ import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import {useState,useEffect} from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
+import MultiSelect from "react-multi-select-component";
 
 const AddHealth = (props) => {
+    const problems = [{value:1,label:"Have Hearing Problem"},{value:2,label:"Have Heart Problem"},{value:3,label:"Have Leg Problem"},{value:4,label:"Have Vision Problem"},{value:5,label:"Claustrophobic"}];
     const[health,setHealth] = useState({});
     const[patients,setPatients] = useState([]);
     const[patient,setPatient] = useState({});
+    const [selected, setSelected] = useState([]);
+    const [result,setResult] = useState({});
 
     const saveHealth = () =>{
-        axios.put(`http://localhost:8888/api/patient`,health).then(
+        console.log(JSON.stringify(result))
+        axios.post(`http://localhost:8888/api/addHealth`,result).then(
             (response)=>{
                 console.log(response.data);
                 toast("Data Saved Successfully !!");
@@ -62,6 +67,27 @@ const AddHealth = (props) => {
                     }
                 </Input>
             </FormGroup>
+
+            <Button  onClick={()=>{
+                setResult({...result,patient:patient})
+                toast("Patient added")
+            }}>Add Patient</Button>
+
+            <FormGroup>
+            <Label for="exampleAttendent">Select Problems:</Label>
+            <MultiSelect
+                options={problems}
+                value={selected}
+                onChange={setSelected}
+                labelledBy="Select"
+            />
+            </FormGroup>
+            <FormGroup>
+            <Button  onClick={()=>{
+                setResult({...result,problems:selected})
+                toast("Problems added")
+            }}>Add Problems</Button>
+            </FormGroup>
             <FormGroup>
                 <Label for="exampleHem">Hemoglobin</Label>
                 <Input type="Hem" name="Hemoglobin" id="exampleHem"
@@ -98,10 +124,18 @@ const AddHealth = (props) => {
                            setHealth({...health, Uricacid: e.target.value})
                        }}/>
             </FormGroup>
+            <FormGroup>
+                <Button onClick={()=>{
+                    setResult({...result,health:health})
+                    toast("Health added")
+                }}>Add Health</Button>
+            </FormGroup>
             <Button type="reset" onClick={()=>{
-                setPatient({...patient,healthcare:health})
+                console.log(selected);
+                console.log(health);
                 console.log(patient);
-                saveHealth();
+                console.log(result);
+                saveHealth()
             }}>Submit</Button>
         </Form>
     );
